@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="111px" height="89px" viewBox="0 0 111 89" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>Windy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-12.0%" y="-13.0%" width="124.0%" height="131.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.00485917412   0 0 0 0 0.499123697   0 0 0 0 0.608152636  0 0 0 1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="ICONS" transform="translate(-413.000000, -414.000000)" stroke="#FFFFFF" stroke-width="5.11152627">
+            <g id="Windy" filter="url(#filter-1)" transform="translate(420.500000, 420.000000)">
+                <path d="M11.2941176,19.0445131 C11.2941176,19.0445131 12.6667106,19.0409935 14.3686608,19.0370621 C14.3686608,19.0370621 28.0347595,18.9979853 31.1830222,19.0445131 C31.1830222,19.0445131 55.6717555,19.4064292 72.2626851,19.6516245 C88.8536147,19.8968199 88.8536148,-0.236483961 72.2626851,0.00210394396" id="Path-4"></path>
+                <path d="M22.5882353,53.9554869 C22.5882353,53.9554869 23.9656494,53.9591126 25.657853,53.9631136 C25.657853,53.9631136 38.8630959,54.0020147 42.0372343,53.9554869 C42.0372343,53.9554869 66.727241,53.5935708 83.4545319,53.3483755 C100.181823,53.1031801 100.181823,73.236484 83.4545319,72.9978961" id="Path-5" stroke-linejoin="round"></path>
+                <path d="M1.12499954e-11,40.7115385 L92.8894108,40.7115385" id="Path-7"></path>
+                <path d="M8.47058824,30.8846154 L72.8213904,30.8846154" id="Path-6"></path>
+            </g>
+        </g>
+    </g>
+</svg>
