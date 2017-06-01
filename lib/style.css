@@ -47,3 +47,23 @@ h3{
   height: 40px;
   width:100px;
 }
+#current-weather,
+#application {
+  width: 75%;
+  margin: 0 auto;
+}
+
+#current-weather {
+  border: 1px solid red;
+  display: flex;
+}
+
+#current-weather-details {
+  border: 1px solid red;
+  width: 50%;
+}
+
+#icon-box {
+  border: 1px solid red;
+  width: 50%;
+}
