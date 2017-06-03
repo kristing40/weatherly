@@ -7,7 +7,7 @@ body {
   height: 100%;
   width: 100%;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   background-image:  url('/lib/images/welcome-weather.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -73,6 +73,7 @@ input::-webkit-input-placeholder {
 
 #input-container,
 #current-weather,
+#seven-hour,
 #summary {
   width: 75%;
   margin: 0 auto;
@@ -113,6 +114,30 @@ input::-webkit-input-placeholder {
   padding: 10px;
   text-shadow: 1px 1px 0 black;*/
 
+}
+
+/******Seven-Hour-Display******/
+
+#seven-hour {
+  border: 2px solid blue;
+  display: flex;
+  flex-direction: row;
+}
+#seven-hour-display {
+  border: 2px solid red;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: #fff;
+}
+
+#weather-card{
+  height: 100%;
+  width: 12%;
+}
+
+#icon-card {
+  border: 1px solid goldenrod;
 }
 
 /******IMAGES******/
