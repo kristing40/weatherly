@@ -4,8 +4,6 @@ html{
 }
 
 body {
-  margin: 0;
-  padding: 0;
   height: 100%;
   width: 100%;
   -webkit-box-sizing: border-box;
@@ -25,59 +23,100 @@ h3,
 
 h1,
 h3 {
-  color: #384252;
+ color: #384252;
 }
 
-
 h1{
-  font-size: 80px;
+  font-size: 100px;
 }
 
 h3{
   margin-top: 100px;
   font-size: 40px;
 }
+
+#application {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+#full-display {
+  /*display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;*/
+  /*width: 50%;*/
+}
+
+#input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+input,
+input::-webkit-input-placeholder {
+  font-size: 17px;
+  color: #BEBEBE;
+}
+
 #application input {
   height: 30px;
-  width:250px;
-  margin-right: 15px;
+  width:70%;
   padding: 10px;
 }
 
 #application input[type=submit] {
-  height: 40px;
-  width:100px;
+  height: 55px;
+  width:20%;
 }
+
+#input-container,
 #current-weather,
-#application {
+#summary {
   width: 75%;
   margin: 0 auto;
 }
 
+#current-weather,
+#summary {
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+
 #current-weather {
-  margin-top: 25px;
-  border: 1px solid black;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
+  /*margin: 50px auto;*/
+  font-size: 24px;
 }
 
 #current-weather-details {
-  background-color: rgba(231, 240, 237, 0.5);;
-  width: 50%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  width: 70%;
+  line-height: 10px;
+  font-family: 'Raleway', sans-serif;
 }
 
 #icon-box {
-  background-color: rgba(231, 240, 237, 0.5);
-  width: 50%;
+  width: 30%;
 }
 
 #summary {
+  /*font-style: italic;
   background-color: rgba(231, 240, 237, 0.2);
-  width: 50%;
   margin: 25px auto;
   color: white;
   font-size: 20px;
   padding: 10px;
-  text-shadow: 1px 1px 0 black;
+  text-shadow: 1px 1px 0 black;*/
+
+}
+
+/******IMAGES******/
+#icon-box img {
+  height: 100px;
+  width: 100px;
 }

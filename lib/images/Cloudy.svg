@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="118px" height="87px" viewBox="0 0 118 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="55px" height="34px" viewBox="0 0 55 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
-    <title>Cloudy</title>
+    <title>Oval 1</title>
     <desc>Created with Sketch.</desc>
-    <defs>
-        <path d="M514.619766,141.731622 C522.048039,143.831593 527.5,150.664756 527.5,158.770158 L527.5,159.296509 C527.5,169.069793 519.575944,177 509.801126,177 L438.198874,177 C428.433184,177 420.5,169.073877 420.5,159.296509 L420.5,158.770158 C420.5,151.664536 424.688617,145.533156 430.731806,142.715379 C429.246623,139.050137 428.425926,135.024386 428.425926,130.8 C428.425926,113.78963 441.733018,100 458.148148,100 C473.211807,100 485.658136,111.612478 487.605461,126.66996 C490.369301,124.739922 493.698893,123.613333 497.282407,123.613333 C506.8579,123.613333 514.62037,131.657284 514.62037,141.58 C514.62037,141.63059 514.620169,141.681131 514.619766,141.731622 Z" id="path-1"></path>
-        <filter x="-7.9%" y="-8.4%" width="115.9%" height="122.1%" filterUnits="objectBoundingBox" id="filter-2">
-            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0.00485917412   0 0 0 0 0.499123697   0 0 0 0 0.608152636  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-        </filter>
-    </defs>
+    <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="ICONS" transform="translate(-415.000000, -97.000000)">
-            <g id="Cloudy">
-                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
-                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+        <g id="Artboard-2" transform="translate(-459.000000, -493.000000)" fill="#FFFFFF">
+            <g id="artwork" transform="translate(184.000000, 24.000000)">
+                <path d="M284.90625,502.820505 C279.622106,502.455129 275.71875,498.337462 275.71875,493.65669 C275.71875,487.986711 280.003525,483.700704 285.671875,483.700704 C286.014921,483.700704 286.354941,483.721688 286.69068,483.762661 C288.060293,475.77556 294.83447,469.915493 303.28125,469.915493 C310.25842,469.915493 316.376361,474.647789 318.53303,481.403337 C318.553257,481.403225 318.573497,481.403169 318.59375,481.403169 C324.513552,481.403169 329.3125,486.203496 329.3125,492.125 C329.3125,497.789001 324.921852,502.427216 319.359375,502.819901 L319.359375,502.846831 L284.90625,502.846831 L284.90625,502.820505 Z" id="Oval-1"></path>
             </g>
         </g>
     </g>
