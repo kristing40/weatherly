@@ -6,7 +6,8 @@ html{
 body {
   height: 100%;
   width: 100%;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background-image:  url('/lib/images/welcome-weather.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -86,7 +87,7 @@ input::-webkit-input-placeholder {
 
 #current-weather {
   display: flex;
-  margin: 50px auto;
+  /*margin: 50px auto;*/
   font-size: 24px;
 }
 
@@ -94,18 +95,24 @@ input::-webkit-input-placeholder {
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
-  width: 50%;
-  line-height: 2px;
+  width: 70%;
+  line-height: 10px;
   font-family: 'Raleway', sans-serif;
 }
 
 #icon-box {
-  width: 50%;
+  width: 30%;
 }
 
 #summary {
-  font-size: 30px;
-  font-style: italic;
+  /*font-style: italic;
+  background-color: rgba(231, 240, 237, 0.2);
+  margin: 25px auto;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  text-shadow: 1px 1px 0 black;*/
+
 }
 
 /******IMAGES******/
