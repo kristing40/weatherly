@@ -34,8 +34,13 @@ h3{
   font-size: 40px;
 }
 
-#full-display {
+#application {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
 
+#full-display {
   /*display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,7 +70,6 @@ input::-webkit-input-placeholder {
   width:20%;
 }
 
-#application,
 #input-container,
 #current-weather,
 #summary {
@@ -75,29 +79,37 @@ input::-webkit-input-placeholder {
 
 #current-weather,
 #summary {
-  color: #384252;
+  color: #FFFFFF;
   font-weight: bold;
 }
 
 
 #current-weather {
-  border: 4px solid red;
   display: flex;
   margin: 50px auto;
-  font-size: 26px;
+  font-size: 24px;
 }
 
 #current-weather-details {
-  border: 1px solid blue;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
   width: 50%;
+  line-height: 2px;
+  font-family: 'Raleway', sans-serif;
 }
 
 #icon-box {
-  border: 1px solid yellow;
   width: 50%;
 }
 
 #summary {
   font-size: 30px;
   font-style: italic;
+}
+
+/******IMAGES******/
+#icon-box img {
+  height: 100px;
+  width: 100px;
 }
