@@ -4,6 +4,7 @@ import apiKey from '../../apiKey';
 import $ from 'jquery';
 import React, { Component } from 'react';
 import iconKeys from './icon-keys';
+import SevenHourDisplay from './SevenHourDisplay';
 
 export default class WelcomeInput extends Component {
   constructor() {
@@ -11,6 +12,7 @@ export default class WelcomeInput extends Component {
     this.state = {
       input: '',
       welcomePage: true,
+      sevenHourArray: [],
     };
   }
 
@@ -40,6 +42,7 @@ export default class WelcomeInput extends Component {
       const hourlyIcons = hourlyArray.map((hourObject) => {
         return hourObject.icon;
       });
+
       const hourlyTemp = hourlyArray.map((hourObject) => {
         return hourObject.temp.english;
       });
@@ -48,7 +51,7 @@ export default class WelcomeInput extends Component {
       console.log(hourlyArray);
       console.log(hourlyTimeArray);
       console.log(hourlyIcons);
-      console.log(hourlyTemp)
+      console.log(hourlyTemp);
       this.setState({ cityStateName: data.current_observation.display_location.full,
                       weekDay: data.forecast.simpleforecast.forecastday[0].date.weekday,
                       time: data.forecast.txt_forecast.date,
@@ -66,6 +69,7 @@ export default class WelcomeInput extends Component {
   }
 
   render() {
+    const sevenHourArray = this.state.sevenHourArray;
     if (this.state.welcomePage) {
       return (
       <section id="fullDisplay">
@@ -111,9 +115,8 @@ export default class WelcomeInput extends Component {
           <div id="summary">
            {this.state.weatherSummary}
          </div>
-         <div id="sevenHour">
-           {this.state.hourlyArray}
-           {this.state.hourlyIcon}
+         <div id="seven-hour">
+           <SevenHourDisplay sevenHourArray={sevenHourArray}/>
          </div>
          {/* <div id="tenDay"></div> */}
          <h3>Don't let the weather catch you off guard!!</h3>
