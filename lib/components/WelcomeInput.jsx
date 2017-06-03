@@ -34,21 +34,20 @@ export default class WelcomeInput extends Component {
   getWeather(location) {
     $.get(`https://api.wunderground.com/api/${apiKey}/conditions/forecast10day/hourly/hourly10day/q/${location}.json`, (data) => {
       console.log(data);
+
       const icon = `./lib/images/${iconKeys[data.current_observation.icon]}`;
       const hourlyArray = data.hourly_forecast.slice(0, 7);
       const hourlyTimeArray = hourlyArray.map((hourObject) => {
         return hourObject.FCTTIME.civil;
       });
       const hourlyIcons = hourlyArray.map((hourObject) => {
-        return hourObject.icon;
+        return hourObject.icon_url;
       });
 
       const hourlyTemp = hourlyArray.map((hourObject) => {
         return hourObject.temp.english;
       });
 
-
-      console.log(hourlyArray);
       console.log(hourlyTimeArray);
       console.log(hourlyIcons);
       console.log(hourlyTemp);
@@ -61,15 +60,19 @@ export default class WelcomeInput extends Component {
                       low: data.forecast.simpleforecast.forecastday[0].low.fahrenheit,
                       weatherIcon: icon,
                       weatherSummary: data.forecast.txt_forecast.forecastday[0].fcttext,
-                      hourlyArray: hourlyTimeArray,
-                      hourlyIcon: hourlyIcons,
+                      hourlyTimeArray: hourlyTimeArray,
+                      hourlyIconArray: hourlyIcons,
+                      hourlyTempArray: hourlyTemp,
                       welcomePage: false,
       });
     });
   }
 
   render() {
-    const sevenHourArray = this.state.sevenHourArray;
+    const cardTime = ['4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM'];
+    const cardIcon = ["partlycloudy", "partlycloudy", "clear", "clear", "clear", "clear", "clear"];
+    const cardTemp = ["78", "78", "77", "75", "71", "68", "64"]
+
     if (this.state.welcomePage) {
       return (
       <section id="fullDisplay">
@@ -116,7 +119,11 @@ export default class WelcomeInput extends Component {
            {this.state.weatherSummary}
          </div>
          <div id="seven-hour">
-           <SevenHourDisplay sevenHourArray={sevenHourArray}/>
+           <SevenHourDisplay cardTime={ this.state.hourlyTimeArray }
+                             cardIcon={ this.state.hourlyIconArray }
+                             cardTemp={ this.state.hourlyTempArray }
+                           />
+           {console.log(this)}
          </div>
          {/* <div id="tenDay"></div> */}
          <h3>Don't let the weather catch you off guard!!</h3>
