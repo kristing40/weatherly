@@ -3,7 +3,7 @@ import HourCard from './HourCard';
 
 
 const SevenHourDisplay = (props) => {
-  // console.log(props);
+
     return (
 
       <section id="seven-hour-display">
