@@ -5,6 +5,7 @@ import $ from 'jquery';
 import React, { Component } from 'react';
 import iconKeys from './icon-keys';
 import SevenHourDisplay from './SevenHourDisplay';
+import TenDayDisplay from './TenDayDisplay';
 
 export default class WelcomeInput extends Component {
   constructor() {
@@ -13,6 +14,7 @@ export default class WelcomeInput extends Component {
       input: '',
       welcomePage: true,
       sevenHourArray: [],
+      tenDaysArray: []
     };
   }
 
@@ -47,10 +49,23 @@ export default class WelcomeInput extends Component {
       const hourlyTemp = hourlyArray.map((hourObject) => {
         return hourObject.temp.english;
       });
+      const tenDayArray = data.forecast.simpleforecast.forecastday;
+      const dayArray = tenDayArray.map((dayObject) => {
+        return dayObject.high.fahrenheit;
+      });
+      const tenDayIconArray =  tenDayArray.map((dayObject) => {
+        return dayObject.icon_url;
+      });
+      const tenDayHiArray = tenDayArray.map((dayObject) => {
+        return dayObject.high.fahrenheit;
+      });
+      const tenDayLowArray = tenDayArray.map((dayObject) => {
+        return dayObject.low.fahrenheit;
+      });
 
-      console.log(hourlyTimeArray);
-      console.log(hourlyIcons);
-      console.log(hourlyTemp);
+      console.log(tenDayIconArray);
+      // console.log(hourlyIcons);
+      // console.log(hourlyTemp);
       this.setState({ cityStateName: data.current_observation.display_location.full,
                       weekDay: data.forecast.simpleforecast.forecastday[0].date.weekday,
                       time: data.forecast.txt_forecast.date,
@@ -63,16 +78,16 @@ export default class WelcomeInput extends Component {
                       hourlyTimeArray: hourlyTimeArray,
                       hourlyIconArray: hourlyIcons,
                       hourlyTempArray: hourlyTemp,
+                      dayArray: dayArray,
+                      tenDayIconArray: tenDayIconArray,
+                      tenDayHiArray: tenDayHiArray,
+                      tenDayLowArray: tenDayLowArray,
                       welcomePage: false,
       });
     });
   }
 
   render() {
-    const cardTime = ['4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM'];
-    const cardIcon = ["partlycloudy", "partlycloudy", "clear", "clear", "clear", "clear", "clear"];
-    const cardTemp = ["78", "78", "77", "75", "71", "68", "64"]
-
     if (this.state.welcomePage) {
       return (
       <section id="fullDisplay">
@@ -123,9 +138,15 @@ export default class WelcomeInput extends Component {
                              cardIcon={ this.state.hourlyIconArray }
                              cardTemp={ this.state.hourlyTempArray }
                            />
-           {console.log(this)}
          </div>
-         {/* <div id="tenDay"></div> */}
+         <div id="ten-day">
+           <TenDayDisplay tenDayCard={this.state.dayArray}
+                          tenDayIconCard={this.state.tenDayIconArray}
+                          tenDayHiCard={this.state.tenDayHiArray}
+                          tenDayLowCard={this.state.tenDayLowArray}
+           />
+
+         </div>
          <h3>Don't let the weather catch you off guard!!</h3>
         </section>
       );

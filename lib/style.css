@@ -74,6 +74,7 @@ input::-webkit-input-placeholder {
 #input-container,
 #current-weather,
 #seven-hour,
+#ten-day-weather-card,
 #summary {
   width: 75%;
   margin: 0 auto;
