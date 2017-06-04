@@ -40,7 +40,10 @@ export default class WelcomeInput extends Component {
                         errorDisplayMessage: errorDisplay,
                       });
       } else {
+        //
+
         const icon = `./lib/images/${iconKeys[data.current_observation.icon]}`;
+        this.setState({ weatherIcon: icon})
         const hourlyArray = data.hourly_forecast.slice(0, 7);
         const hourlyTime = hourlyArray.map((hourObject) => {
           return hourObject.FCTTIME.civil;
@@ -72,7 +75,7 @@ export default class WelcomeInput extends Component {
           currentTemp: data.current_observation.feelslike_string,
           hi: data.forecast.simpleforecast.forecastday[0].high.fahrenheit,
           low: data.forecast.simpleforecast.forecastday[0].low.fahrenheit,
-          weatherIcon: icon,
+          // weatherIcon: icon,
           weatherSummary: data.forecast.txt_forecast.forecastday[0].fcttext,
           hourlyTimeArray: hourlyTime,
           hourlyIconArray: hourlyIcons,
