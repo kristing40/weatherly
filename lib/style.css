@@ -10,7 +10,7 @@ body {
   box-sizing: border-box;
   background-image:  url('/lib/images/welcome-rain.jpg');
   background-color: rgba(255, 255, 255, 0.4);
-  background-blend-mode: screen;
+  background-blend-mode:screen;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -43,7 +43,7 @@ h3{
 }
 
 .full-display {
-  width: 90%;
+  width: 95%;
 }
 
 .input-container {
@@ -82,7 +82,8 @@ input::-webkit-input-placeholder {
 
 .current-weather {
   display: flex;
-  font-size: 24px;
+  font-size: 22px;
+  text-shadow: 1px 1px 1px #000;
   margin: 55px auto;
 }
 
@@ -146,6 +147,10 @@ input::-webkit-input-placeholder {
   /*rgba(220, 220, 220, 0.8);*/
 }
 
+.ten-day-weather-card {
+  font-size: 75%;
+}
+
 .weather-card {
   width: 12%;
 }
@@ -163,4 +168,11 @@ input::-webkit-input-placeholder {
 .icon-box img {
   height: 100px;
   width: 174px;
+}
+
+
+.hour-icons,
+.day-icons {
+  height: 50px;
+  width: 50px;
 }

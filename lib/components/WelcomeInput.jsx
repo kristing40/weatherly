@@ -48,8 +48,9 @@ export default class WelcomeInput extends Component {
           return hourObject.FCTTIME.civil;
         });
         const hourlyIcons = hourlyArray.map((hourObject) => {
-          return hourObject.icon_url;
+          return hourObject.icon;
         });
+        console.log(hourlyIcons)
         const hourlyTemp = hourlyArray.map((hourObject) => {
           return hourObject.temp.english;
         });
@@ -58,7 +59,7 @@ export default class WelcomeInput extends Component {
           return dayObject.date.weekday;
         });
         const tenDayIcons = tenDayArray.map((dayObject) => {
-          return dayObject.icon_url;
+          return dayObject.icon;
         });
         const tenDayHis = tenDayArray.map((dayObject) => {
           return dayObject.high.fahrenheit;
