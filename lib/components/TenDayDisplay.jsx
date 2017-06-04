@@ -4,7 +4,7 @@ import DayCard from './DayCard.jsx';
 
 const TenDayDisplay = (props) => {
   return (
-    <section id="ten-hour-display">
+    <section className="ten-day-display">
       <DayCard day={props.tenDayCard[0]}
                icon={props.tenDayIconCard[0]}
                high={props.tenDayHiCard[0]}

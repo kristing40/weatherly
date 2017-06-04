@@ -4,7 +4,7 @@ import HourCard from './HourCard.jsx';
 
 const SevenHourDisplay = (props) => {
   return (
-    <section id="seven-hour-display">
+    <section className="seven-hour-display">
       <HourCard time={props.cardTime[0]}
                 icon={props.cardIcon[0]}
                 temp={props.cardTemp[0]}
