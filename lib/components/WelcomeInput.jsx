@@ -158,6 +158,7 @@ export default class WelcomeInput extends Component {
                  />
           </div>
           <div className="current-weather">
+            <div className="current-weather-inner-container">
             <div className="current-weather-details">
               <p className="city-name">
                 { this.state.cityStateName }
@@ -181,6 +182,7 @@ export default class WelcomeInput extends Component {
             <div className="icon-box">
               <img alt="weather icon" src={this.state.weatherIcon}/>
             </div>
+          </div>
           </div>
           <div className="summary">
            {this.state.weatherSummary}
