@@ -94,9 +94,9 @@ export default class WelcomeInput extends Component {
       <section className="fullDisplay">
         <h1>Weatherly</h1>
         <div className="input-container">
-          <input className="mainInput"
+          <input id="mainInput"
+                 aria-label="enter a zip code or city"
                  type="text"
-                 label for="mainInput"
                  value={ this.state.input }
                  placeholder="Enter your Zip Code or City/State"
                  onChange={ (event) => {
@@ -117,9 +117,9 @@ export default class WelcomeInput extends Component {
         <section className="fullDisplay">
           <h1>Weatherly</h1>
           <div className="input-container">
-            <input className="mainInput"
+            <input id="mainInput"
+                   aria-label="enter a zip code or city"
                    type="text"
-                   label for="mainInput"
                    value={ this.state.input }
                    placeholder="Enter your Zip Code or City/State"
                    onChange={ (event) => {
@@ -141,9 +141,9 @@ export default class WelcomeInput extends Component {
         <section className="fullDisplay">
           <h1>Weatherly</h1>
           <div className="input-container">
-            <input className="mainInput"
+            <input id="mainInput"
+                   aria-label="enter a zip code or city"
                    type="text"
-                   label for="mainInput"
                    value={ this.state.input }
                    placeholder="Enter your Zip Code or City/State"
                    onChange={ (event) => {
@@ -170,10 +170,10 @@ export default class WelcomeInput extends Component {
                 Current Temperature - { this.state.currentTemp }
               </p>
               <p className="today-high">
-                Today's Hi:{ this.state.hi }
+                Today's Hi: { this.state.hi }
               </p>
               <p className="today-low">
-                Today's Low:{ this.state.low }
+                Today's Low: { this.state.low }
               </p>
             </div>
             <div className="icon-box">

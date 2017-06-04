@@ -76,7 +76,6 @@ input::-webkit-input-placeholder {
 
 .current-weather,
 .summary {
-  color: #FFFFFF;
   font-weight: bold;
 }
 
@@ -89,7 +88,6 @@ input::-webkit-input-placeholder {
 .current-weather-details {
   display: flex;
   flex-flow: column wrap;
-  align-items: flex-start;
   width: 70%;
   line-height: 10px;
   font-family: 'Raleway', sans-serif;
