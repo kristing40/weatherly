@@ -140,7 +140,8 @@ input::-webkit-input-placeholder {
 }
 
 .ten-day-weather-card {
-  width: 8%;
+  width: 9%;
+  margin: 5px;
 }
 
 .icon-card {

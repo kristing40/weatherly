@@ -40,6 +40,8 @@ export default class WelcomeInput extends Component {
                         errorDisplayMessage: errorDisplay,
                       });
       } else {
+        //
+
         const icon = `./lib/images/${iconKeys[data.current_observation.icon]}`;
         const hourlyArray = data.hourly_forecast.slice(0, 7);
         const hourlyTime = hourlyArray.map((hourObject) => {
