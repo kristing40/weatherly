@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 
 const HourCard = (props) => {
   return (
-      <div id="weather-card">
+      <div className="weather-card">
           <p className="hour-items">{props.time}</p>
-        <div id="icon-card">
-          <p className="hour-items"><img src={props.icon}/></p>
+        <div className="icon-card">
+          <p className="hour-items"><img alt="weather icon" src={props.icon}/></p>
           <p className="hour-items">{props.temp}</p>
         </div>
       </div>
