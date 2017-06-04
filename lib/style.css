@@ -14,6 +14,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  opacity: 0.9;
 }
 
 h1,
@@ -76,21 +77,29 @@ input::-webkit-input-placeholder {
 
 .current-weather,
 .summary {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .current-weather {
   display: flex;
   font-size: 24px;
-  margin-top: 20px;
+  margin: 55px auto;
+}
+
+.current-weather-inner-container {
+  display: flex;
+  margin: 0 auto;
+  width: 77%;
 }
 
 .current-weather-details {
   display: flex;
   flex-flow: column wrap;
   width: 70%;
-  line-height: 10px;
+  line-height: 5px;
   font-family: 'Raleway', sans-serif;
+  text-align: left;
+  color: #fff;
 }
 
 .icon-box {
@@ -99,7 +108,7 @@ input::-webkit-input-placeholder {
 
 .summary {
   font-style: italic;
-  background-color: rgba(231, 240, 237, 0.7);
+  background-color: rgba(235, 240, 239, 0.4);
   border-radius: 15px;
   margin: 25px auto;
   color: #000;
@@ -109,7 +118,7 @@ input::-webkit-input-placeholder {
   width: 75%;
 }
 
-/******Seven-Hour-Display******/
+/******Seven-Hour-Display & Ten-Day-Display******/
 
 .seven-hour {
   display: flex;
@@ -122,7 +131,7 @@ input::-webkit-input-placeholder {
   width: 100%;
   border-radius: 10px;
   color: #000;
-  background-color: rgba(0, 0, 255, 0.7);
+  background-color: #ffffba;
   margin-top: 20px;
 }
 
@@ -131,8 +140,10 @@ input::-webkit-input-placeholder {
   height: 85%;
   margin: auto 0;
   padding-bottom: 5px;
-  background-color: rgba(220, 220, 220, 0.8);
+  background-color: #E0E0E0;
   border-radius: 10px;
+
+  /*rgba(220, 220, 220, 0.8);*/
 }
 
 .weather-card {
@@ -151,5 +162,5 @@ input::-webkit-input-placeholder {
 /******IMAGES******/
 .icon-box img {
   height: 100px;
-  width: 100px;
+  width: 174px;
 }
