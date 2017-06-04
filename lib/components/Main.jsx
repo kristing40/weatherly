@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import WelcomeInput from './WelcomeInput.jsx';
 
-export default class Main extends Component {
-  constructor() {
-    super();
-    this.state = {
-    };
-  }
+const Main = () => {
+  return (
+    <section>
+      <WelcomeInput/>
+    </section>
+  );
+};
 
-  render() {
-    return (
-      <section>
-        <WelcomeInput/>
-      </section>
-    );
-  }
-}
+export default Main;
