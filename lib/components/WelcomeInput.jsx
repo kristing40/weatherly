@@ -1,5 +1,5 @@
-require('../normalize.css');
-require('../style.css');
+// require('../normalize.css');
+// require('../style.css');
 import apiKey from '../../apiKey';
 import $ from 'jquery';
 import React, { Component } from 'react';
@@ -18,17 +18,17 @@ export default class WelcomeInput extends Component {
   }
 
   componentDidMount() {
-    const fromLocal = localStorage.getItem('city') ?
-    localStorage.getItem('city') : '';
-    this.setState({ input: fromLocal });
-    if (fromLocal.length) {
-      this.getWeather(fromLocal);
-    }
+    // const fromLocal = localStorage.getItem('city') ?
+    // localStorage.getItem('city') : '';
+    // this.setState({ input: fromLocal });
+    // if (fromLocal.length) {
+    //   this.getWeather(fromLocal);
+    // }
   }
 
   handleSubmit() {
     this.getWeather(this.state.input);
-    localStorage.setItem('city', this.state.input);
+    // localStorage.setItem('city', this.state.input);
   }
 
   getWeather(location) {
