@@ -10,23 +10,10 @@ describe('HourCard', () => {
       12am
       </p>)).toEqual(true);
 
-      console.log(component.debug());
-    expect(component.contains(<p className="hour-items">
-      85 F&#8457;
-    </p>).isascii()).toEqual(true);
-
     expect(component.contains(<p className="hour-items">
       <img className="hour-icons" alt="weather icon" src="./lib/images/undefined" />
       </p>)).toEqual(true);
 
     expect(component.contains('85 F')).toEqual(true);
-
-    expect(component.contains(<div className="weather-card">
-          <p className="hour-items">12am</p>
-        <div className="icon-card">
-          <p className="hour-items"><img className="hour-icons" alt="weather icon" src="./lib/images/undefined"/></p>
-          <p className="hour-items">85 F</p>
-        </div>
-      </div>)).toEqual(true);
-  })
+  });
 });
