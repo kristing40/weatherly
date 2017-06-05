@@ -13,7 +13,7 @@ const HourCard = (props) => {
                  alt="weather icon" src={`./lib/images/${iconKeysColor[props.icon]}`}/>
           </p>
           <p className="hour-temp-text">Temp</p>
-          <p className="hour-temp">{props.temp}</p>
+          <p className="hour-temp">{props.temp}&#8457;</p>
         </div>
       </div>
     );

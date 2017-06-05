@@ -1,3 +1,5 @@
+require('../normalize.css');
+require('../style.css');
 import apiKey from '../../apiKey';
 import $ from 'jquery';
 import React, { Component } from 'react';
@@ -38,6 +40,7 @@ export default class WelcomeInput extends Component {
 
   getWeather(location) {
     $.get(`https://api.wunderground.com/api/${apiKey}/conditions/forecast10day/hourly/hourly10day/q/${location}.json`, (data) => {
+      console.log(data);
       if (data.response.error) {
         const errorDisplay = data.response.error.description;
 
@@ -74,7 +77,7 @@ export default class WelcomeInput extends Component {
         this.setState({ cityStateName: data.current_observation.display_location.full,
           weekDayTime: data.current_observation.observation_time,
           condition: data.current_observation.weather,
-          currentTemp: data.current_observation.feelslike_string,
+          currentTemp: Math.floor(data.current_observation.temp_f),
           hi: data.forecast.simpleforecast.forecastday[0].high.fahrenheit,
           low: data.forecast.simpleforecast.forecastday[0].low.fahrenheit,
           weatherIcon: icon,
@@ -89,6 +92,7 @@ export default class WelcomeInput extends Component {
           errorMessage: false,
           welcomePage: false,
           input: '',
+          locationZip: data.current_observation.display_location.zip,
         });
       }
     });
@@ -176,6 +180,8 @@ export default class WelcomeInput extends Component {
             <div className="current-weather-details">
               <p className="city-name">
                 { this.state.cityStateName }
+                <span> - </span>
+                { this.state.locationZip }
               </p>
               <p className="date-and-time">
                 { this.state.weekDayTime }
@@ -184,13 +190,13 @@ export default class WelcomeInput extends Component {
                 Right now it is { this.state.condition }
               </p>
               <p className="current-temp">
-                Temperature - { this.state.currentTemp }
+                Temperature: { this.state.currentTemp }&#8457;
               </p>
               <p className="today-high">
-                Today's Hi: { this.state.hi }
+                Today's Hi: { this.state.hi }&#8457;
               </p>
               <p className="today-low">
-                Today's Low: { this.state.low }
+                Today's Low: { this.state.low }&#8457;
               </p>
             </div>
             <div className="icon-box">
