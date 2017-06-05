@@ -25,6 +25,11 @@ export default class WelcomeInput extends Component {
     }
   }
 
+  resetInput() {
+    localStorage.removeItem('city');
+    this.setState({ welcomePage: true })
+  }
+
   handleSubmit() {
     this.getWeather(this.state.input);
     localStorage.setItem('city', this.state.input);
@@ -33,7 +38,6 @@ export default class WelcomeInput extends Component {
 
   getWeather(location) {
     $.get(`https://api.wunderground.com/api/${apiKey}/conditions/forecast10day/hourly/hourly10day/q/${location}.json`, (data) => {
-      console.log(data);
       if (data.response.error) {
         const errorDisplay = data.response.error.description;
 
@@ -50,7 +54,6 @@ export default class WelcomeInput extends Component {
         const hourlyIcons = hourlyArray.map((hourObject) => {
           return hourObject.icon;
         });
-        console.log(hourlyIcons)
         const hourlyTemp = hourlyArray.map((hourObject) => {
           return hourObject.temp.english;
         });
@@ -94,27 +97,27 @@ export default class WelcomeInput extends Component {
   render() {
     if (this.state.welcomePage && !this.state.errorMessage) {
       return (
-      <section className="fullDisplay">
-        <h1>Weatherly</h1>
-        <div className="input-container">
-          <input id="mainInput"
-                 aria-label="enter a zip code or city"
-                 type="text"
-                 value={ this.state.input }
-                 placeholder="Enter your Zip Code or City/State"
-                 onChange={ (event) => {
-                   this.setState({ input: event.target.value });
-                 }}
-               />
-          <input className="submit-btn"
+          <section className="fullDisplay">
+           <h1>Weatherly</h1>
+            <div className="input-container">
+               <input id="mainInput"
+                  aria-label="enter a zip code or city"
+                  type="text"
+                  value={ this.state.input }
+                  placeholder="Enter your Zip Code or City/State"
+                  onChange={ (event) => {
+                  this.setState({ input: event.target.value });
+                  }}
+                   />
+              <input className="submit-btn"
                  type="submit"
                  disabled={ !this.state.input }
                  onClick={ () => this.handleSubmit()}
-               />
-        </div>
-        <h2>Welcome to weatherly!!  Enter you location above to find the weather.</h2>
-        <h3>Don't let the weather catch you off guard!!</h3>
-      </section>
+              />
+          </div>
+            <h2>Welcome to weatherly!!  Enter you location above to find the weather.</h2>
+            <h3>Don't let the weather catch you off guard!!</h3>
+          </section>
     );
     } else if (this.state.errorMessage === true) {
       return (
@@ -159,6 +162,13 @@ export default class WelcomeInput extends Component {
                    type="submit"
                    disabled={ !this.state.input }
                    onClick={ () => this.handleSubmit() }
+                 />
+          </div>
+          <div>
+            <input className="reset-btn"
+                   type="submit"
+                   value="Reset"
+                   onClick={ () => this.resetInput() }
                  />
           </div>
           <div className="current-weather">
@@ -206,6 +216,7 @@ export default class WelcomeInput extends Component {
                            tenDayLowCard={ this.state.tenDayLowArray }
                          />
           </div>
+
           <h3>Don't let the weather catch you off guard!!</h3>
         </section>
       );
