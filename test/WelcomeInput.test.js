@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import WelcomeInput from '../lib/components/WelcomeInput.jsx';
+import LocalStorageMock from './LocalStorageMock.js'
 
 describe('WelcomeInput', () => {
   it('Should render', () => {
