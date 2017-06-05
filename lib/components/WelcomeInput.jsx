@@ -1,9 +1,7 @@
-// require('../normalize.css');
-// require('../style.css');
 import apiKey from '../../apiKey';
 import $ from 'jquery';
 import React, { Component } from 'react';
-import iconKeys from './icon-keys.jsx';
+import iconKeysColor from './icon-keys-color.jsx';
 import SevenHourDisplay from './SevenHourDisplay.jsx';
 import TenDayDisplay from './TenDayDisplay.jsx';
 
@@ -18,31 +16,33 @@ export default class WelcomeInput extends Component {
   }
 
   componentDidMount() {
-    // const fromLocal = localStorage.getItem('city') ?
-    // localStorage.getItem('city') : '';
-    // this.setState({ input: fromLocal });
-    // if (fromLocal.length) {
-    //   this.getWeather(fromLocal);
-    // }
+    const fromLocal = localStorage.getItem('city') ?
+      localStorage.getItem('city') : '';
+
+    this.setState({ input: fromLocal });
+    if (fromLocal.length) {
+      this.getWeather(fromLocal);
+    }
   }
 
   handleSubmit() {
     this.getWeather(this.state.input);
-    // localStorage.setItem('city', this.state.input);
+    localStorage.setItem('city', this.state.input);
+    this.setState({ input: '' });
   }
 
   getWeather(location) {
     $.get(`https://api.wunderground.com/api/${apiKey}/conditions/forecast10day/hourly/hourly10day/q/${location}.json`, (data) => {
+      console.log(data);
       if (data.response.error) {
         const errorDisplay = data.response.error.description;
 
         this.setState({ errorMessage: true,
                         errorDisplayMessage: errorDisplay,
+                        input: '',
                       });
       } else {
-        //
-
-        const icon = `./lib/images/${iconKeys[data.current_observation.icon]}`;
+        const icon = `./lib/images/${iconKeysColor[data.current_observation.icon]}`;
         const hourlyArray = data.hourly_forecast.slice(0, 7);
         const hourlyTime = hourlyArray.map((hourObject) => {
           return hourObject.FCTTIME.civil;
@@ -69,9 +69,8 @@ export default class WelcomeInput extends Component {
         });
 
         this.setState({ cityStateName: data.current_observation.display_location.full,
-          weekDay: data.forecast.simpleforecast.forecastday[0].date.weekday,
-          time: data.forecast.txt_forecast.date,
-          condition: data.current_observation.icon,
+          weekDayTime: data.current_observation.observation_time,
+          condition: data.current_observation.weather,
           currentTemp: data.current_observation.feelslike_string,
           hi: data.forecast.simpleforecast.forecastday[0].high.fahrenheit,
           low: data.forecast.simpleforecast.forecastday[0].low.fahrenheit,
@@ -86,6 +85,7 @@ export default class WelcomeInput extends Component {
           tenDayLowArray: tenDayLows,
           errorMessage: false,
           welcomePage: false,
+          input: '',
         });
       }
     });
@@ -108,6 +108,7 @@ export default class WelcomeInput extends Component {
                />
           <input className="submit-btn"
                  type="submit"
+                 disabled={ !this.state.input }
                  onClick={ () => this.handleSubmit()}
                />
         </div>
@@ -130,12 +131,13 @@ export default class WelcomeInput extends Component {
                    }}
                  />
             <input className="submit-btn"
-                   type = "submit"
-                   onClick = { () => this.handleSubmit()}
+                   type="submit"
+                   disabled={ !this.state.input }
+                   onClick={ () => this.handleSubmit()}
                  />
           </div>
           <h2 className='error-message'>{ this.state.errorDisplayMessage }</h2>
-          <h2>Welcome to weatherly!!  Enter your location above to find the weather.</h2>
+          <h2>Welcome to weatherly!!  Enter your location above.</h2>
           <h3>Don't let the weather catch you off guard!!</h3>
         </section>
       );
@@ -155,6 +157,7 @@ export default class WelcomeInput extends Component {
                  />
             <input className="submit-btn"
                    type="submit"
+                   disabled={ !this.state.input }
                    onClick={ () => this.handleSubmit() }
                  />
           </div>
@@ -165,13 +168,13 @@ export default class WelcomeInput extends Component {
                 { this.state.cityStateName }
               </p>
               <p className="date-and-time">
-                { this.state.weekDay } - { this.state.time }
+                { this.state.weekDayTime }
               </p>
               <p className="weather-condition">
-                { this.state.condition }
+                Right now it is { this.state.condition }
               </p>
               <p className="current-temp">
-                Current Temperature - { this.state.currentTemp }
+                Temperature - { this.state.currentTemp }
               </p>
               <p className="today-high">
                 Today's Hi: { this.state.hi }
@@ -200,7 +203,6 @@ export default class WelcomeInput extends Component {
                            tenDayHiCard={ this.state.tenDayHiArray }
                            tenDayLowCard={ this.state.tenDayLowArray }
                          />
-
           </div>
           <h3>Don't let the weather catch you off guard!!</h3>
         </section>
