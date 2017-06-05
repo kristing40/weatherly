@@ -75,6 +75,10 @@ input::-webkit-input-placeholder {
   width:20%;
 }
 
+input[type=submit]:disabled {
+  background-color: gray;
+}
+
 .seven-hour {
   width: 85%;
   margin: 0 auto;
@@ -127,8 +131,8 @@ input::-webkit-input-placeholder {
 .forecast-title {
   font-size: 25px;
   font-weight: 600;
-  color: #fff;
-  text-shadow: 2px 2px 5px #000;
+  color: #00004d;
+  text-shadow: 2px 2px 5px #fff;
   margin: 15px auto 0;
 }
 
