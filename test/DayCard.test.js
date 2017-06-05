@@ -16,8 +16,6 @@ describe('DayCard', () => {
     low='22'/>);
     const temp = component.find('.ten-day-items');
 
-    console.log(temp);
-
     expect(component.containsAnyMatchingElements([
       <p className="ten-day-items">High: 95&#176;</p>
     ])).toEqual(true);
