@@ -137,7 +137,7 @@ export default class WelcomeInput extends Component {
                  />
           </div>
           <h2 className='error-message'>{ this.state.errorDisplayMessage }</h2>
-          <h2>Welcome to weatherly!!  Enter your location above.</h2>
+          <h2>You done goofed big time!  Enter your location above, but do it right this time.</h2>
           <h3>Don't let the weather catch you off guard!!</h3>
         </section>
       );
@@ -191,12 +191,14 @@ export default class WelcomeInput extends Component {
           <div className="summary">
            {this.state.weatherSummary}
           </div>
+          <p className="forecast-title">7-Hour Forecast</p>
           <div className="seven-hour">
             <SevenHourDisplay cardTime={ this.state.hourlyTimeArray }
                               cardIcon={ this.state.hourlyIconArray }
                               cardTemp={ this.state.hourlyTempArray }
                             />
           </div>
+          <p className="forecast-title">10-Day Forecast</p>
           <div className="ten-day">
             <TenDayDisplay tenDayCard={ this.state.tenDayArray }
                            tenDayIconCard={ this.state.tenDayIconArray }

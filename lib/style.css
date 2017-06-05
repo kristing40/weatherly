@@ -9,7 +9,7 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   background-image:  url('/lib/images/water-drops.jpg');
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.4);
   background-blend-mode: hard-light;
   background-repeat: no-repeat;
   background-size: cover;
@@ -31,9 +31,19 @@ h3 {
 h1{
   font-size: 100px;
 }
+h2 {
+  width: 75%;
+  margin: 20px auto;
+}
 
 h3{
   font-size: 40px;
+}
+
+.error-message {
+  font-size: 50px;
+  color: rgb(149, 26, 26);
+  text-shadow: 2px 2px 5px #000;
 }
 
 #application {
@@ -104,7 +114,7 @@ input::-webkit-input-placeholder {
   font-style: italic;
   background-color: rgba(235, 240, 239, 0.7);
   border-radius: 15px;
-  margin: 25px auto;
+  margin: 20px auto;
   color: #000;
   font-size: 24px;
   padding: 10px;
@@ -113,6 +123,14 @@ input::-webkit-input-placeholder {
 }
 
 /******Seven-Hour-Display & Ten-Day-Display******/
+
+.forecast-title {
+  font-size: 25px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 2px 2px 5px #000;
+  margin: 15px auto 0;
+}
 
 .seven-hour {
   display: flex;
@@ -126,7 +144,6 @@ input::-webkit-input-placeholder {
   border-radius: 10px;
   color: #000;
   background-color: #ffffba;
-  margin-top: 20px;
 }
 
 .weather-card {
