@@ -29,7 +29,7 @@ export default class WelcomeInput extends Component {
 
   resetInput() {
     localStorage.removeItem('city');
-    this.setState({ welcomePage: true })
+    this.setState({ welcomePage: true });
   }
 
   handleSubmit() {
@@ -110,7 +110,7 @@ export default class WelcomeInput extends Component {
                   value={ this.state.input }
                   placeholder="Enter your Zip Code or City/State"
                   onChange={ (event) => {
-                  this.setState({ input: event.target.value });
+                    this.setState({ input: event.target.value });
                   }}
                    />
               <input className="submit-btn"
@@ -165,6 +165,7 @@ export default class WelcomeInput extends Component {
             <input className="submit-btn"
                    type="submit"
                    disabled={ !this.state.input }
+                   value="Submit"
                    onClick={ () => this.handleSubmit() }
                  />
           </div>
@@ -222,7 +223,6 @@ export default class WelcomeInput extends Component {
                            tenDayLowCard={ this.state.tenDayLowArray }
                          />
           </div>
-
           <h3>Don't let the weather catch you off guard!!</h3>
         </section>
       );
