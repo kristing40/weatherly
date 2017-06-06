@@ -63,6 +63,7 @@ h3{
 input,
 input::-webkit-input-placeholder {
   font-size: 24px;
+  color: #00004d;
 }
 
 #application input {
@@ -77,10 +78,6 @@ input::-webkit-input-placeholder {
 
 input[type=submit]:disabled {
   background-color: gray;
-}
-
-input[type=submit]:before {
-content: 'Submit'
 }
 
 .seven-hour {
