@@ -9,6 +9,10 @@ import TenDayDisplay from './TenDayDisplay.jsx';
 import { Node, Trie } from '../../node_modules/@noetic97/npm-complete-me-jh/index.js';
 import cityList from './cityList';
 
+const autoCompleter = new Trie();
+
+autoCompleter.populate(cityList.data);
+
 
 export default class WelcomeInput extends Component {
   constructor() {
@@ -30,17 +34,6 @@ export default class WelcomeInput extends Component {
     }
   }
 
-  autoComplete() {
-    const autoCompleter = new Trie();
-
-    autoCompleter.populate(cityList.data);
-    console.log(autoCompleter);
-    if (this.state.input) {
-      let autoArray = autoCompleter.suggest(this.state.input);
-      console.log('autoArray', autoArray);
-    }
-  }
-
   resetInput() {
     localStorage.removeItem('city');
     this.setState({ welcomePage: true });
@@ -54,9 +47,8 @@ export default class WelcomeInput extends Component {
 
   getWeather(location) {
     $.get(`https://api.wunderground.com/api/${apiKey}/conditions/forecast10day/hourly/hourly10day/q/${location}.json`, (data) => {
-      console.log(data);
-      if (data.response.error) {
-        const errorDisplay = data.response.error.description;
+      if (data.response.error || data.response.results) {
+        const errorDisplay = 'No cities match your search query';
 
         this.setState({ errorMessage: true,
                         errorDisplayMessage: errorDisplay,
@@ -112,6 +104,31 @@ export default class WelcomeInput extends Component {
     });
   }
 
+  autoComplete() {
+    if (this.state.input) {
+      const autoArray = autoCompleter.suggest(this.state.input);
+      return this.suggestList(autoArray);
+    }
+    return true;
+  }
+
+  suggestList(city) {
+    return (
+      <datalist id="cities" size="45">
+        <option value={city[0]}/>
+        <option value={city[1]}/>
+        <option value={city[2]}/>
+        <option value={city[3]}/>
+        <option value={city[4]}/>
+        <option value={city[5]}/>
+        <option value={city[6]}/>
+        <option value={city[7]}/>
+        <option value={city[8]}/>
+        <option value={city[9]}/>
+      </datalist>
+    );
+  }
+
   render() {
     if (this.state.welcomePage && !this.state.errorMessage) {
       return (
@@ -124,11 +141,12 @@ export default class WelcomeInput extends Component {
                   value={ this.state.input }
                   placeholder="Enter your Zip Code or City/State"
                   onChange={ (event) => {
-
-                    this.autoComplete();
                     this.setState({ input: event.target.value });
                   }}
                    />
+                   <div>
+                     {this.autoComplete(this.state.input)}
+                   </div>
               <input className="submit-btn"
                  type="submit"
                  disabled={ !this.state.input }
@@ -150,10 +168,12 @@ export default class WelcomeInput extends Component {
                    value={ this.state.input }
                    placeholder="Enter your Zip Code or City/State"
                    onChange={ (event) => {
-                     this.autoComplete();
                      this.setState({ input: event.target.value });
                    }}
                  />
+                 <div>
+                   {this.autoComplete(this.state.input)}
+                 </div>
             <input className="submit-btn"
                    type="submit"
                    disabled={ !this.state.input }
@@ -175,11 +195,15 @@ export default class WelcomeInput extends Component {
                    type="text"
                    value={ this.state.input }
                    placeholder="Enter your Zip Code or City/State"
+                   list="cities"
                    onChange={ (event) => {
-                     this.autoComplete();
                      this.setState({ input: event.target.value });
                    }}
                  />
+                 <div>
+                   {this.autoComplete(this.state.input)}
+                 </div>
+
             <input className="submit-btn"
                    type="submit"
                    disabled={ !this.state.input }
