@@ -6,6 +6,21 @@ import React, { Component } from 'react';
 import iconKeysColor from './icon-keys-color.jsx';
 import SevenHourDisplay from './SevenHourDisplay.jsx';
 import TenDayDisplay from './TenDayDisplay.jsx';
+import { Node, Trie } from '../../node_modules/@noetic97/npm-complete-me-jh/index.js';
+
+// let autoComplete = new Trie();
+//
+// console.log(autoComplete);
+//
+// autoComplete.populate(['hello', 'bye']);
+//
+// console.log(autoComplete);
+
+
+
+// Trie.populate(['word', 'hello']);
+//
+// console.log(Trie.root);
 
 export default class WelcomeInput extends Component {
   constructor() {
@@ -24,6 +39,17 @@ export default class WelcomeInput extends Component {
     this.setState({ input: fromLocal });
     if (fromLocal.length) {
       this.getWeather(fromLocal);
+    }
+  }
+
+  autoComplete() {
+    const autoCompleter = new Trie();
+
+    autoCompleter.populate(['hello', 'bye']);
+    console.log(autoCompleter);
+    if (this.state.input) {
+      let autoArray = autoCompleter.suggest(this.state.input);
+      console.log('autoArray', autoArray);
     }
   }
 
@@ -99,6 +125,7 @@ export default class WelcomeInput extends Component {
   }
 
   render() {
+    this.autoComplete();
     if (this.state.welcomePage && !this.state.errorMessage) {
       return (
           <section className="fullDisplay">
