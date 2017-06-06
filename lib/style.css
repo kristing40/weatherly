@@ -24,7 +24,7 @@ h3,
 
 h1,
 h3 {
- color: #000;
+ color: #00004d;
  text-shadow: 2px 2px 2px #fff;
 }
 
@@ -63,6 +63,7 @@ h3{
 input,
 input::-webkit-input-placeholder {
   font-size: 24px;
+  color: #00004d;
 }
 
 #application input {
@@ -119,7 +120,7 @@ input[type=submit]:disabled {
   background-color: rgba(235, 240, 239, 0.7);
   border-radius: 15px;
   margin: 20px auto;
-  color: #000;
+  color: #00004d;
   font-size: 24px;
   padding: 10px;
   text-shadow: 2px 2px 4px #fff;
