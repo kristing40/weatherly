@@ -85,6 +85,11 @@ input[type=submit]:disabled {
   margin: 0 auto;
 }
 
+.city-list {
+  border: 3px solid red;
+  height: 50px;
+}
+
 .current-weather,
 .summary {
   font-weight: 600;
@@ -105,7 +110,6 @@ input[type=submit]:disabled {
 
 .current-weather-details {
   width: 70%;
-  line-height: 10px;
   font-family: 'Raleway', sans-serif;
   color: #fff;
 }
@@ -164,31 +168,36 @@ input[type=submit]:disabled {
 }
 
 .city-name {
-  margin-top: 10px;
+  margin: 15px;
   font-size: 40px;
 }
 
 .date-and-time {
   font-size: 24px;
   padding-bottom: 20px;
+  margin: 10px;
 }
 
 .weather-condition {
   padding-bottom: 20px;
+  margin: 5px;
 }
 
 .current-temp {
   font-size: 28px;
+  margin: 5px;
 }
 
 .today-high {
   font-size: 24px;
   text-shadow: 2px 2px 4px #d20f0f;
+  margin: 5px;
 }
 
 .today-low {
   font-size: 24px;
   text-shadow: 2px 2px 4px #0d14b4;
+  margin: 5px;
 }
 
 .ten-day-weather-card {
