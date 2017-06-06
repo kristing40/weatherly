@@ -140,6 +140,7 @@ export default class WelcomeInput extends Component {
                   type="text"
                   value={ this.state.input }
                   placeholder="Enter your Zip Code or City/State"
+                  list="cities"
                   onChange={ (event) => {
                     this.setState({ input: event.target.value });
                   }}
@@ -167,6 +168,7 @@ export default class WelcomeInput extends Component {
                    type="text"
                    value={ this.state.input }
                    placeholder="Enter your Zip Code or City/State"
+                   list="cities"
                    onChange={ (event) => {
                      this.setState({ input: event.target.value });
                    }}
