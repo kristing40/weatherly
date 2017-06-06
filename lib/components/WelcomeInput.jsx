@@ -6,6 +6,9 @@ import React, { Component } from 'react';
 import iconKeysColor from './icon-keys-color.jsx';
 import SevenHourDisplay from './SevenHourDisplay.jsx';
 import TenDayDisplay from './TenDayDisplay.jsx';
+import { Node, Trie } from '../../node_modules/@noetic97/npm-complete-me-jh/index.js';
+import cityList from './cityList';
+
 
 export default class WelcomeInput extends Component {
   constructor() {
@@ -24,6 +27,17 @@ export default class WelcomeInput extends Component {
     this.setState({ input: fromLocal });
     if (fromLocal.length) {
       this.getWeather(fromLocal);
+    }
+  }
+
+  autoComplete() {
+    const autoCompleter = new Trie();
+
+    autoCompleter.populate(cityList.data);
+    console.log(autoCompleter);
+    if (this.state.input) {
+      let autoArray = autoCompleter.suggest(this.state.input);
+      console.log('autoArray', autoArray);
     }
   }
 
@@ -110,6 +124,8 @@ export default class WelcomeInput extends Component {
                   value={ this.state.input }
                   placeholder="Enter your Zip Code or City/State"
                   onChange={ (event) => {
+
+                    this.autoComplete();
                     this.setState({ input: event.target.value });
                   }}
                    />
@@ -134,6 +150,7 @@ export default class WelcomeInput extends Component {
                    value={ this.state.input }
                    placeholder="Enter your Zip Code or City/State"
                    onChange={ (event) => {
+                     this.autoComplete();
                      this.setState({ input: event.target.value });
                    }}
                  />
@@ -159,6 +176,7 @@ export default class WelcomeInput extends Component {
                    value={ this.state.input }
                    placeholder="Enter your Zip Code or City/State"
                    onChange={ (event) => {
+                     this.autoComplete();
                      this.setState({ input: event.target.value });
                    }}
                  />
