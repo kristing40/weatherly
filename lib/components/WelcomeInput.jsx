@@ -15,7 +15,6 @@ const autoCompleter = new Trie();
 
 autoCompleter.populate(cityList.data);
 
-
 export default class WelcomeInput extends Component {
   constructor() {
     super();
@@ -35,8 +34,19 @@ export default class WelcomeInput extends Component {
   //   }
   // }
 
+
+  setLocalStorage() {
+    localStorage.setItem('city', this.state.input);
+    this.setState({ input: '' });
+  }
+
   submitLocation(location) {
     this.getWeather(location);
+  }
+
+  resetInput() {
+    localStorage.removeItem('city');
+    this.setState({ welcomePage: true });
   }
 
   getWeather(location) {
@@ -46,20 +56,10 @@ export default class WelcomeInput extends Component {
 
         this.setState({ errorMessage: true,
                         errorDisplayMessage: errorDisplay,
-                        input: '',
                       });
       } else {
         const icon = `./lib/images/${iconKeysColor[data.current_observation.icon]}`;
         const hourlyArray = data.hourly_forecast.slice(0, 7);
-        const hourlyTime = hourlyArray.map((hourObject) => {
-          return hourObject.FCTTIME.civil;
-        });
-        const hourlyIcons = hourlyArray.map((hourObject) => {
-          return hourObject.icon;
-        });
-        const hourlyTemp = hourlyArray.map((hourObject) => {
-          return hourObject.temp.english;
-        });
         const tenDayArray = data.forecast.simpleforecast.forecastday;
         const tenDays = tenDayArray.map((dayObject) => {
           return dayObject.date.weekday;
@@ -82,9 +82,7 @@ export default class WelcomeInput extends Component {
           low: data.forecast.simpleforecast.forecastday[0].low.fahrenheit,
           weatherIcon: icon,
           weatherSummary: data.forecast.txt_forecast.forecastday[0].fcttext,
-          hourlyTimeArray: hourlyTime,
-          hourlyIconArray: hourlyIcons,
-          hourlyTempArray: hourlyTemp,
+          hourlyObject: hourlyArray,
           tenDayArray: tenDays,
           tenDayIconArray: tenDayIcons,
           tenDayHiArray: tenDayHis,
@@ -97,18 +95,11 @@ export default class WelcomeInput extends Component {
     });
   }
 
-  handleSubmit() {
-    this.getWeather(this.state.input);
-    localStorage.setItem('city', this.state.input);
-    this.setState({ input: '' });
-  }
-
   render() {
     if (this.state.welcomePage && !this.state.errorMessage) {
       return (
         <section className="fullDisplay">
-          <h1>Weatherly</h1>
-          <Search submitHandler={this.submitLocation.bind(this)}/>
+          <Search submitHandler={this.submitLocation.bind(this) }/>
           <h2>Welcome to weatherly!!  Enter you location above to find the weather.</h2>
           <h3>Don't let the weather catch you off guard!!</h3>
         </section>
@@ -116,8 +107,7 @@ export default class WelcomeInput extends Component {
     } else if (this.state.errorMessage === true) {
       return (
         <section className="fullDisplay">
-          <h1>Weatherly</h1>
-          <Search/>
+          <Search submitHandler={this.submitLocation.bind(this) }/>
           <h2 className="error-message">{this.state.errorDisplayMessage}</h2>
           <h2>You done goofed big time!  Enter your location above, but do it right this time.</h2>
           <h3>Don't let the weather catch you off guard!!</h3>
@@ -126,8 +116,15 @@ export default class WelcomeInput extends Component {
     } else {
       return (
         <section className="fullDisplay">
-          <h1>Weatherly</h1>
-          <Search />
+          <Search submitHandler={this.submitLocation.bind(this) }/>
+          <div>
+            <input
+              className="reset-btn"
+              type="submit"
+              value="Reset"
+              onClick={() => this.resetInput()}
+            />
+          </div>
           <div className="current-weather">
             <div className="current-weather-inner-container">
               <div className="current-weather-details">
@@ -163,9 +160,7 @@ export default class WelcomeInput extends Component {
           <p className="forecast-title">7-Hour Forecast</p>
           <div className="seven-hour">
             <SevenHourDisplay
-              cardTime={this.state.hourlyTimeArray}
-              cardIcon={this.state.hourlyIconArray}
-              cardTemp={this.state.hourlyTempArray}
+              hourlyObject={this.state.hourlyObject}
             />
           </div>
           <p className="forecast-title">10-Day Forecast</p>
