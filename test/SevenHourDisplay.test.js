@@ -10,12 +10,11 @@ describe('SevenHourDisplay', () => {
 
   it.skip('Should return a node at a given index', () => {
     const component = mount(<SevenHourDisplay />);
-    expect(component.find(time).get(0).props.cardTime).toEqual("12am");
+    expect(component.find(time).get(0).props.cardTime).toEqual('12am');
   });
 
   it('Should give the name of the current node', () => {
     const component = mount(<section />);
     expect(component.name()).toEqual('section');
   });
-
 });
