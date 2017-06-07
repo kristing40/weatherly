@@ -13,10 +13,15 @@ const autoCompleter = new Trie();
 autoCompleter.populate(cityList.data);
 export default class Search extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       input: '',
-    }
+    };
+  }
+
+  setLocalStorage() {
+    localStorage.setItem('city', this.state.input);
+    this.setState({ input: '' });
   }
 
   autoComplete() {
@@ -27,16 +32,11 @@ export default class Search extends Component {
     return true;
   }
 
-  setLocalStorage() {
-    localStorage.setItem('city', this.state.input);
-    this.setState({ input: '' });
-  }
-
   suggestList(city) {
     let options = city.map((element) => {
-    let key = Math.ceil(Date.now() * Math.random());
-      return <option className="drop-down" value={element} key={key} />
-    }).slice(0,10);
+      let key = Math.ceil(Date.now() * Math.random());
+      return <option className="drop-down" value={element} key={key} />;
+    }).slice(0, 10);
     return (
       <datalist id="cities" size="45">
         {options}
@@ -44,8 +44,13 @@ export default class Search extends Component {
     );
   }
 
+  searchAndClearSubmit() {
+    this.props.submitHandler(this.state.input);
+    this.setLocalStorage();
+  }
+
   render() {
-    return(
+    return (
       <section className="fullDisplay">
         <h1>Weatherly</h1>
         <div className="input-container">
@@ -67,7 +72,7 @@ export default class Search extends Component {
             className="submit-btn"
             type="submit"
             disabled={!this.state.input}
-            onClick={() => this.props.submitHandler(this.state.input)}
+            onClick={this.searchAndClearSubmit.bind(this)}
           />
         </div>
       </section>

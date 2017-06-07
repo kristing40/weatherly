@@ -11,7 +11,7 @@ const TenDayDisplay = (props) => {
       high={object.high.fahrenheit}
       low={object.low.fahrenheit}
       key={key}
-    />
+    />;
   });
 
   return (
