@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import WelcomeInput from '../lib/components/WelcomeInput.jsx';
-import LocalStorageMock from './LocalStorageMock.js'
+import LocalStorageMock from './LocalStorageMock.js';
 
 describe('WelcomeInput', () => {
   it('Should render', () => {
@@ -25,10 +25,8 @@ describe('WelcomeInput', () => {
 
     const submitButton = component.find('input[type="submit"]');
 
-    console.log(submitButton.debug());
-
     submitButton.simulate('click');
 
     expect(input.prop('value')).toEqual('');
-  })
+  });
 });

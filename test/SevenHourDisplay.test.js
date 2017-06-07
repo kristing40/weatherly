@@ -4,5 +4,5 @@ import SevenHourDisplay from '../lib/components/SevenHourDisplay.jsx';
 
 describe('SevenHourDisplay', () => {
   it.skip('Should render', () => {
-  })
+  });
 });

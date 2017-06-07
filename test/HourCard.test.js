@@ -4,11 +4,11 @@ import HourCard from '../lib/components/HourCard.jsx';
 
 describe('HourCard', () => {
   it.only('Should render', () => {
-    const component = shallow(<HourCard time="12am" temp="85 F" icon="./lib/images/weather.svg"/>)
+    const component = shallow(<HourCard time="12am" temp="85 F" icon="./lib/images/weather.svg" />);
 
     expect(component.contains(<p className="hour-items">
       12am
-      </p>)).toEqual(true);
+    </p>)).toEqual(true);
 
     expect(component.contains(<p className="hour-temp">
       85 F℉
@@ -16,17 +16,17 @@ describe('HourCard', () => {
 
     expect(component.contains(<p className="hour-items">
       <img className="hour-icons" alt="weather icon" src="./lib/images/undefined" />
-      </p>)).toEqual(true);
+    </p>)).toEqual(true);
 
     expect(component.contains('85 F')).toEqual(true);
 
     expect(component.contains(<div className="weather-card">
-        <p className="hour-items">
+      <p className="hour-items">
         12am
-        </p>
-        <div className="icon-card">
+      </p>
+      <div className="icon-card">
         <p className="hour-items">
-        <img className="hour-icons" alt="weather icon" src="./lib/images/undefined" />
+          <img className="hour-icons" alt="weather icon" src="./lib/images/undefined" />
         </p>
         <p className="hour-temp-text">
         Temp
@@ -34,7 +34,7 @@ describe('HourCard', () => {
         <p className="hour-temp">
         85 F℉
         </p>
-        </div>
-        </div>)).toEqual(true);
+      </div>
+    </div>)).toEqual(true);
   });
 });
