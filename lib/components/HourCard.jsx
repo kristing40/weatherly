@@ -4,6 +4,7 @@ import $ from 'jquery';
 
 
 const HourCard = (props) => {
+  console.log('hourCard', props);
   return (
     <div className="weather-card">
       <p className="hour-items">{props.time}</p>

@@ -16,8 +16,6 @@ export default class Search extends Component {
     super()
     this.state = {
       input: '',
-      welcomePage: true,
-      errorMessage: false,
     }
   }
 
@@ -29,9 +27,9 @@ export default class Search extends Component {
     return true;
   }
 
-  resetInput() {
-    localStorage.removeItem('city');
-    this.setState({ welcomePage: true });
+  setLocalStorage() {
+    localStorage.setItem('city', this.state.input);
+    this.setState({ input: '' });
   }
 
   suggestList(city) {
@@ -40,7 +38,6 @@ export default class Search extends Component {
       return <option className="drop-down" value={element} key={key} />
     }).slice(0,10);
     return (
-
       <datalist id="cities" size="45">
         {options}
       </datalist>
@@ -69,21 +66,11 @@ export default class Search extends Component {
           <input
             className="submit-btn"
             type="submit"
-            // disabled={!this.state.input}
+            disabled={!this.state.input}
             onClick={() => this.props.submitHandler(this.state.input)}
           />
         </div>
-        <div>
-          <input
-            className="reset-btn"
-            type="submit"
-            value="Reset"
-            onClick={() => this.resetInput()}
-          />
-        </div>
-        <h2>Welcome to weatherly!!  Enter you location above to find the weather.</h2>
-        <h3>Don't let the weather catch you off guard!!</h3>
       </section>
-    )
+    );
   }
 }
