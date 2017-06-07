@@ -61,17 +61,8 @@ export default class WelcomeInput extends Component {
         const icon = `./lib/images/${iconKeysColor[data.current_observation.icon]}`;
         const hourlyArray = data.hourly_forecast.slice(0, 7);
         const tenDayArray = data.forecast.simpleforecast.forecastday;
-        const tenDays = tenDayArray.map((dayObject) => {
-          return dayObject.date.weekday;
-        });
-        const tenDayIcons = tenDayArray.map((dayObject) => {
-          return dayObject.icon;
-        });
-        const tenDayHis = tenDayArray.map((dayObject) => {
-          return dayObject.high.fahrenheit;
-        });
-        const tenDayLows = tenDayArray.map((dayObject) => {
-          return dayObject.low.fahrenheit;
+        const tenDays = tenDayArray.map((object) => {
+          return object.date.weekday;
         });
 
         this.setState({ cityStateName: data.current_observation.display_location.full,
@@ -83,10 +74,7 @@ export default class WelcomeInput extends Component {
           weatherIcon: icon,
           weatherSummary: data.forecast.txt_forecast.forecastday[0].fcttext,
           hourlyObject: hourlyArray,
-          tenDayArray: tenDays,
-          tenDayIconArray: tenDayIcons,
-          tenDayHiArray: tenDayHis,
-          tenDayLowArray: tenDayLows,
+          dayObject: tenDayArray,
           errorMessage: false,
           welcomePage: false,
           locationZip: data.current_observation.display_location.zip,
@@ -166,10 +154,7 @@ export default class WelcomeInput extends Component {
           <p className="forecast-title">10-Day Forecast</p>
           <div className="ten-day">
             <TenDayDisplay
-              tenDayCard={this.state.tenDayArray}
-              tenDayIconCard={this.state.tenDayIconArray}
-              tenDayHiCard={this.state.tenDayHiArray}
-              tenDayLowCard={this.state.tenDayLowArray}
+              dayObject={this.state.dayObject}
             />
           </div>
           <h3>Don't let the weather catch you off guard!!</h3>
