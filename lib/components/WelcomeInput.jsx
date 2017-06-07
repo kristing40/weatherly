@@ -6,7 +6,9 @@ import React, { Component } from 'react';
 import iconKeysColor from './icon-keys-color.jsx';
 import SevenHourDisplay from './SevenHourDisplay.jsx';
 import TenDayDisplay from './TenDayDisplay.jsx';
+import Search from './Search.jsx';
 import { Node, Trie } from '../../node_modules/@noetic97/npm-complete-me-jh/index.js';
+
 import cityList from './cityList';
 
 const autoCompleter = new Trie();
@@ -18,20 +20,23 @@ export default class WelcomeInput extends Component {
   constructor() {
     super();
     this.state = {
-      input: '',
       welcomePage: true,
       errorMessage: false,
     };
   }
 
-  componentDidMount() {
-    const fromLocal = localStorage.getItem('city') ?
-      localStorage.getItem('city') : '';
+  // componentDidMount() {
+  //   const fromLocal = localStorage.getItem('city') ?
+  //     localStorage.getItem('city') : '';
+  //
+  //   this.setState({ input: fromLocal });
+  //   if (fromLocal.length) {
+  //     this.getWeather(fromLocal);
+  //   }
+  // }
 
-    this.setState({ input: fromLocal });
-    if (fromLocal.length) {
-      this.getWeather(fromLocal);
-    }
+  submitLocation(location) {
+    this.getWeather(location);
   }
 
   getWeather(location) {
@@ -86,7 +91,6 @@ export default class WelcomeInput extends Component {
           tenDayLowArray: tenDayLows,
           errorMessage: false,
           welcomePage: false,
-          input: '',
           locationZip: data.current_observation.display_location.zip,
         });
       }
@@ -99,63 +103,12 @@ export default class WelcomeInput extends Component {
     this.setState({ input: '' });
   }
 
-  resetInput() {
-    localStorage.removeItem('city');
-    this.setState({ welcomePage: true });
-  }
-
-  autoComplete() {
-    if (this.state.input) {
-      const autoArray = autoCompleter.suggest(this.state.input);
-      return this.suggestList(autoArray);
-    }
-    return true;
-  }
-
-  suggestList(city) {
-    return (
-      <datalist id="cities" size="45">
-        <option className="drop-down" value={city[0]} />
-        <option className="drop-down" value={city[1]} />
-        <option className="drop-down" value={city[2]} />
-        <option className="drop-down" value={city[3]} />
-        <option className="drop-down" value={city[4]} />
-        <option className="drop-down" value={city[5]} />
-        <option className="drop-down" value={city[6]} />
-        <option className="drop-down" value={city[7]} />
-        <option className="drop-down" value={city[8]} />
-        <option className="drop-down" value={city[9]} />
-      </datalist>
-    );
-  }
-
   render() {
     if (this.state.welcomePage && !this.state.errorMessage) {
       return (
         <section className="fullDisplay">
           <h1>Weatherly</h1>
-          <div className="input-container">
-            <input
-              id="mainInput"
-              aria-label="enter a zip code or city"
-              type="text"
-              value={this.state.input}
-              placeholder="Enter your Zip Code or City/State"
-              list="cities"
-              onChange={(event) => {
-                this.setState({ input: event.target.value });
-              }}
-            />
-            <div>
-              {this.autoComplete(this.state.input)}
-            </div>
-            <input
-              className="submit-btn"
-              type="submit"
-              disabled={!this.state.input}
-              onClick={() => this.handleSubmit()}
-            />
-          </div>
+          <Search submitHandler={this.submitLocation.bind(this)}/>
           <h2>Welcome to weatherly!!  Enter you location above to find the weather.</h2>
           <h3>Don't let the weather catch you off guard!!</h3>
         </section>
@@ -164,28 +117,7 @@ export default class WelcomeInput extends Component {
       return (
         <section className="fullDisplay">
           <h1>Weatherly</h1>
-          <div className="input-container">
-            <input
-              id="mainInput"
-              aria-label="enter a zip code or city"
-              type="text"
-              value={this.state.input}
-              placeholder="Enter your Zip Code or City/State"
-              list="cities"
-              onChange={(event) => {
-                this.setState({ input: event.target.value });
-              }}
-            />
-            <div>
-              {this.autoComplete(this.state.input)}
-            </div>
-            <input
-              className="submit-btn"
-              type="submit"
-              disabled={!this.state.input}
-              onClick={() => this.handleSubmit()}
-            />
-          </div>
+          <Search/>
           <h2 className="error-message">{this.state.errorDisplayMessage}</h2>
           <h2>You done goofed big time!  Enter your location above, but do it right this time.</h2>
           <h3>Don't let the weather catch you off guard!!</h3>
@@ -195,37 +127,7 @@ export default class WelcomeInput extends Component {
       return (
         <section className="fullDisplay">
           <h1>Weatherly</h1>
-          <div className="input-container">
-            <input
-              id="mainInput"
-              aria-label="enter a zip code or city"
-              type="text"
-              value={this.state.input}
-              placeholder="Enter your Zip Code or City/State"
-              list="cities"
-              onChange={(event) => {
-                this.setState({ input: event.target.value });
-              }}
-            />
-            <div>
-              {this.autoComplete(this.state.input)}
-            </div>
-            <input
-              className="submit-btn"
-              type="submit"
-              disabled={!this.state.input}
-              value="Submit"
-              onClick={() => this.handleSubmit()}
-            />
-          </div>
-          <div>
-            <input
-              className="reset-btn"
-              type="submit"
-              value="Reset"
-              onClick={() => this.resetInput()}
-            />
-          </div>
+          <Search />
           <div className="current-weather">
             <div className="current-weather-inner-container">
               <div className="current-weather-details">
