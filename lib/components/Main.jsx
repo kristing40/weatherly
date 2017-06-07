@@ -4,7 +4,7 @@ import WelcomeInput from './WelcomeInput.jsx';
 const Main = () => {
   return (
     <section>
-      <WelcomeInput/>
+      <WelcomeInput />
     </section>
   );
 };
