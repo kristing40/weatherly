@@ -115,16 +115,16 @@ export default class WelcomeInput extends Component {
   suggestList(city) {
     return (
       <datalist id="cities" size="45">
-        <option value={city[0]} />
-        <option value={city[1]} />
-        <option value={city[2]} />
-        <option value={city[3]} />
-        <option value={city[4]} />
-        <option value={city[5]} />
-        <option value={city[6]} />
-        <option value={city[7]} />
-        <option value={city[8]} />
-        <option value={city[9]} />
+        <option className="drop-down" value={city[0]} />
+        <option className="drop-down" value={city[1]} />
+        <option className="drop-down" value={city[2]} />
+        <option className="drop-down" value={city[3]} />
+        <option className="drop-down" value={city[4]} />
+        <option className="drop-down" value={city[5]} />
+        <option className="drop-down" value={city[6]} />
+        <option className="drop-down" value={city[7]} />
+        <option className="drop-down" value={city[8]} />
+        <option className="drop-down" value={city[9]} />
       </datalist>
     );
   }
