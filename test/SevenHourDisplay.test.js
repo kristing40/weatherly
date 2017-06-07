@@ -5,7 +5,7 @@ import SevenHourDisplay from '../lib/components/SevenHourDisplay.jsx';
 describe('SevenHourDisplay', () => {
   it.skip('Should render', () => {
     const component = shallow(<SevenHourDisplay time="12am" temp="85 F" icon="./lib/images/weather.svg" />);
-
+    console.log(component.debug())
     expect(component.contains(<p className="seven-hour-display">
       12am
     </p>)).toEqual(true);
