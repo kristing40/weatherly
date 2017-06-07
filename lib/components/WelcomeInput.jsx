@@ -24,15 +24,13 @@ export default class WelcomeInput extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   const fromLocal = localStorage.getItem('city') ?
-  //     localStorage.getItem('city') : '';
-  //
-  //   this.setState({ input: fromLocal });
-  //   if (fromLocal.length) {
-  //     this.getWeather(fromLocal);
-  //   }
-  // }
+  componentDidMount() {
+    const fromLocal = localStorage.getItem('city') ?
+      localStorage.getItem('city') : '';
+    if (fromLocal.length) {
+      this.getWeather(fromLocal);
+    }
+  }
 
 
   setLocalStorage() {
@@ -42,6 +40,8 @@ export default class WelcomeInput extends Component {
 
   submitLocation(location) {
     this.getWeather(location);
+    // Search.setState({ input: '' })
+    console.log(this);
   }
 
   resetInput() {
@@ -61,9 +61,6 @@ export default class WelcomeInput extends Component {
         const icon = `./lib/images/${iconKeysColor[data.current_observation.icon]}`;
         const hourlyArray = data.hourly_forecast.slice(0, 7);
         const tenDayArray = data.forecast.simpleforecast.forecastday;
-        const tenDays = tenDayArray.map((object) => {
-          return object.date.weekday;
-        });
 
         this.setState({ cityStateName: data.current_observation.display_location.full,
           weekDayTime: data.current_observation.observation_time,
@@ -87,7 +84,7 @@ export default class WelcomeInput extends Component {
     if (this.state.welcomePage && !this.state.errorMessage) {
       return (
         <section className="fullDisplay">
-          <Search submitHandler={this.submitLocation.bind(this) }/>
+          <Search submitHandler={this.submitLocation.bind(this)} />
           <h2>Welcome to weatherly!!  Enter you location above to find the weather.</h2>
           <h3>Don't let the weather catch you off guard!!</h3>
         </section>
@@ -95,7 +92,7 @@ export default class WelcomeInput extends Component {
     } else if (this.state.errorMessage === true) {
       return (
         <section className="fullDisplay">
-          <Search submitHandler={this.submitLocation.bind(this) }/>
+          <Search submitHandler={this.submitLocation.bind(this)} />
           <h2 className="error-message">{this.state.errorDisplayMessage}</h2>
           <h2>You done goofed big time!  Enter your location above, but do it right this time.</h2>
           <h3>Don't let the weather catch you off guard!!</h3>
@@ -104,7 +101,7 @@ export default class WelcomeInput extends Component {
     } else {
       return (
         <section className="fullDisplay">
-          <Search submitHandler={this.submitLocation.bind(this) }/>
+          <Search submitHandler={this.submitLocation.bind(this)} />
           <div>
             <input
               className="reset-btn"
