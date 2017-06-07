@@ -56,15 +56,20 @@ describe('WelcomeInput', () => {
       <option className="drop-down" value={city[0]} />
       <option className="drop-down" value={city[1]} />
       <option className="drop-down" value={city[2]} /></datalist>);
-      const dropdown = component.find('.drop-down').map(node => node.value())
+      const dropdown = component.find('.drop-down').map(node => node);
 
     expect(dropdown).toEqual([city[0], city[1], city[2]]);
   });
 
-  // it('Should call handleSubmit function when submit button is pressed', () => {
-  //   const mockCallback = jest.fn();
-  //   each([0, 1], mockCallback);
-  //
-  // expect(someMockFunction.mock.calls.length).toBe(1);
-  // });
+  it.skip('It should execute passed in function when clicked', () => {
+    const mockFn = jest.fn();
+    const component = shallow(<WelcomeInput handleSubmit={mockFn} />);
+    const button = component.find('.submit-btn');
+    button.simulate('click');
+
+    expect(mockFn).toHaveBeenCalledTimes(0);
+    component.setState({ input: 'Hello World!' });
+    button.simulate('submit');
+    expect(mockFn).toHaveBeenCalledTimes(1);
+  });
 });
