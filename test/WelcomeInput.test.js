@@ -67,9 +67,13 @@ describe('WelcomeInput', () => {
     const button = component.find('.submit-btn');
     button.simulate('click');
 
+    expect(component.state().input).toEqual('');
     expect(mockFn).toHaveBeenCalledTimes(0);
+
     component.setState({ input: 'Hello World!' });
-    button.simulate('submit');
+    expect(component.state().input).toEqual('Hello World!');
+
+    button.simulate('click');
     expect(mockFn).toHaveBeenCalledTimes(1);
   });
 });
