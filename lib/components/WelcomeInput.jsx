@@ -152,7 +152,7 @@ export default class WelcomeInput extends Component {
             <input
               className="submit-btn"
               type="submit"
-              // disabled={!this.state.input}
+              disabled={!this.state.input}
               onClick={() => this.handleSubmit()}
             />
           </div>
@@ -182,7 +182,7 @@ export default class WelcomeInput extends Component {
             <input
               className="submit-btn"
               type="submit"
-              // disabled={!this.state.input}
+              disabled={!this.state.input}
               onClick={() => this.handleSubmit()}
             />
           </div>
@@ -213,7 +213,7 @@ export default class WelcomeInput extends Component {
             <input
               className="submit-btn"
               type="submit"
-              // disabled={!this.state.input}
+              disabled={!this.state.input}
               value="Submit"
               onClick={() => this.handleSubmit()}
             />
