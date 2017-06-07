@@ -61,23 +61,33 @@ h3{
 }
 
 input,
-input::-webkit-input-placeholder {
+input::-webkit-input-placeholder,
+button {
   font-size: 24px;
   color: #00004d;
 }
 
-#application input {
+input,
+button {
   width:55%;
   padding: 2px 0 2px 10px;
 }
 
-#application input[type=submit] {
+button {
   height: 55px;
   width:20%;
 }
 
-input[type=submit]:disabled {
+button:disabled {
   background-color: gray;
+}
+
+.reset-btn {
+  margin: 15px auto;
+  border-radius: 50px;
+  width: 150px;
+  height: 40px;
+
 }
 
 .seven-hour {

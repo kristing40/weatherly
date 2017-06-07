@@ -68,12 +68,11 @@ export default class Search extends Component {
           <div>
             {this.autoComplete(this.state.input)}
           </div>
-          <input
+          <button
             className="submit-btn"
-            type="submit"
             disabled={!this.state.input}
             onClick={this.searchAndClearSubmit.bind(this)}
-          />
+          >Submit</button>
         </div>
       </section>
     );
