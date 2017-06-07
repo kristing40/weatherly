@@ -13,21 +13,11 @@ const autoCompleter = new Trie();
 autoCompleter.populate(cityList.data);
 export default class Search extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       input: '',
       welcomePage: true,
       errorMessage: false,
-    };
-  }
-
-  componentDidMount() {
-    const fromLocal = localStorage.getItem('city') ?
-      localStorage.getItem('city') : '';
-
-    this.setState({ input: fromLocal });
-    if (fromLocal.length) {
-      this.getWeather(fromLocal);
     }
   }
 
@@ -37,6 +27,24 @@ export default class Search extends Component {
       return this.suggestList(autoArray);
     }
     return true;
+  }
+
+  resetInput() {
+    localStorage.removeItem('city');
+    this.setState({ welcomePage: true });
+  }
+
+  suggestList(city) {
+    let options = city.map((element) => {
+    let key = Math.ceil(Date.now() * Math.random());
+      return <option className="drop-down" value={element} key={key} />
+    }).slice(0,10);
+    return (
+
+      <datalist id="cities" size="45">
+        {options}
+      </datalist>
+    );
   }
 
   render() {
@@ -61,8 +69,8 @@ export default class Search extends Component {
           <input
             className="submit-btn"
             type="submit"
-            disabled={!this.state.input}
-            onClick={() => this.handleSubmit()}
+            // disabled={!this.state.input}
+            onClick={() => this.props.submitHandler(this.state.input)}
           />
         </div>
         <div>
