@@ -6,7 +6,9 @@ import React, { Component } from 'react';
 import iconKeysColor from './icon-keys-color.jsx';
 import SevenHourDisplay from './SevenHourDisplay.jsx';
 import TenDayDisplay from './TenDayDisplay.jsx';
+import Search from './Search.jsx';
 import { Node, Trie } from '../../node_modules/@noetic97/npm-complete-me-jh/index.js';
+
 import cityList from './cityList';
 
 const autoCompleter = new Trie();
@@ -24,15 +26,15 @@ export default class WelcomeInput extends Component {
     };
   }
 
-  componentDidMount() {
-    const fromLocal = localStorage.getItem('city') ?
-      localStorage.getItem('city') : '';
-
-    this.setState({ input: fromLocal });
-    if (fromLocal.length) {
-      this.getWeather(fromLocal);
-    }
-  }
+  // componentDidMount() {
+  //   const fromLocal = localStorage.getItem('city') ?
+  //     localStorage.getItem('city') : '';
+  //
+  //   this.setState({ input: fromLocal });
+  //   if (fromLocal.length) {
+  //     this.getWeather(fromLocal);
+  //   }
+  // }
 
   getWeather(location) {
     $.get(`https://api.wunderground.com/api/${apiKey}/conditions/forecast10day/hourly/hourly10day/q/${location}.json`, (data) => {
@@ -104,13 +106,13 @@ export default class WelcomeInput extends Component {
     this.setState({ welcomePage: true });
   }
 
-  autoComplete() {
-    if (this.state.input) {
-      const autoArray = autoCompleter.suggest(this.state.input);
-      return this.suggestList(autoArray);
-    }
-    return true;
-  }
+  // autoComplete() {
+  //   if (this.state.input) {
+  //     const autoArray = autoCompleter.suggest(this.state.input);
+  //     return this.suggestList(autoArray);
+  //   }
+  //   return true;
+  // }
 
   suggestList(city) {
     return (
@@ -195,37 +197,7 @@ export default class WelcomeInput extends Component {
       return (
         <section className="fullDisplay">
           <h1>Weatherly</h1>
-          <div className="input-container">
-            <input
-              id="mainInput"
-              aria-label="enter a zip code or city"
-              type="text"
-              value={this.state.input}
-              placeholder="Enter your Zip Code or City/State"
-              list="cities"
-              onChange={(event) => {
-                this.setState({ input: event.target.value });
-              }}
-            />
-            <div>
-              {this.autoComplete(this.state.input)}
-            </div>
-            <input
-              className="submit-btn"
-              type="submit"
-              disabled={!this.state.input}
-              value="Submit"
-              onClick={() => this.handleSubmit()}
-            />
-          </div>
-          <div>
-            <input
-              className="reset-btn"
-              type="submit"
-              value="Reset"
-              onClick={() => this.resetInput()}
-            />
-          </div>
+          <Search />
           <div className="current-weather">
             <div className="current-weather-inner-container">
               <div className="current-weather-details">
