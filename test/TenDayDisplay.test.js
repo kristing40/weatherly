@@ -9,8 +9,9 @@ describe('TenDayDisplay', () => {
   });
 
   it.skip('Should return a node at a given index', () => {
-    const component = mount(<TenDayDisplay />);
-    expect(component.find(time).get(0).props.cardTime).toEqual('12am');
+    const component = shallow(<TenDayDisplay dayObject={['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday']} />);
+
+    console.log(component.debug());
   });
 
   it('Should give the name of the current node', () => {

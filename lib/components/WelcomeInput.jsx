@@ -96,6 +96,7 @@ export default class WelcomeInput extends Component {
         </section>
       );
     } else {
+      console.log(this.state.hourlyObject)
       return (
         <section className="fullDisplay">
           <Search submitHandler={this.submitLocation.bind(this)} />
