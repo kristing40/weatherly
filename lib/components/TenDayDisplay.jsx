@@ -3,6 +3,7 @@ import DayCard from './DayCard.jsx';
 
 
 const TenDayDisplay = (props) => {
+
   let dayCard = props.dayObject.map((object) => {
     let key = Math.ceil(Date.now() * Math.random());
     return <DayCard
