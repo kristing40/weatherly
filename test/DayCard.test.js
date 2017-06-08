@@ -32,4 +32,17 @@ describe('DayCard', () => {
     expect(component.find('.icon-card')).toHaveLength(1);
     expect(component.find('.ten-day-items')).toHaveLength(4);
   });
+  it('Should expect a ShallowWrapper as the   first argument, and will be run with a context of the original instance', () => {
+  const component = shallow(
+  <div>
+    <p className="foo bax" />
+    <p className="foo bar" />
+    <p className="foo baz" />
+  </div>
+);
+
+    component.find('.foo').forEach(function    (node) {
+    expect(node.hasClass('foo')).toEqual(true);
+});
+  });
 });

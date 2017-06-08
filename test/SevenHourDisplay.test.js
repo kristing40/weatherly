@@ -8,8 +8,8 @@ describe('SevenHourDisplay', () => {
     expect(component.find('.ten-hour-display').exists()).toBe(false);
   });
 
-  it.skip('Should return a node at a given index', () => {
-    const component = mount(<SevenHourDisplay />);
+  it('Should return a node at a given index', () => {
+    const component = mount(<SevenHourDisplay hourlyObject={["12am", "1am", "2am"]}/>);
     expect(component.find(time).get(0).props.cardTime).toEqual('12am');
   });
 

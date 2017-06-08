@@ -3,7 +3,9 @@ import HourCard from './HourCard.jsx';
 
 
 const SevenHourDisplay = (props) => {
-  let timeCard = props.hourlyObject.map((object) => {
+  console.log(props)
+  let timeCard = props.hourlyObject.map((object) =>
+   {
     let key = Math.ceil(Date.now() * Math.random());
     return <HourCard
       time={object.FCTTIME.civil}

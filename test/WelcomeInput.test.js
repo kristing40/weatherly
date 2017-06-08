@@ -20,11 +20,6 @@ describe('WelcomeInput', () => {
     expect(component.state().weatherSummary).toBeUndefined();
   });
 
-  it('Should display an error message when a user enters a zip code or city that does not exist',
-  () => {
-    const component = mount(<WelcomeInput />);
-  });
-
   it('Should render the number of elements with a particular class or id', () => {
     const component = shallow(<WelcomeInput />);
     expect(component.find('.fullDisplay')).toHaveLength(1);
