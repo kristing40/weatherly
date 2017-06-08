@@ -9,10 +9,11 @@ describe('Main', () => {
 
     expect(component.instance().props);
   });
+
   it('Should have parents', () => {
     const component = mount(<Main />);
 
-    expect(component.find('h1').parents()).toHaveLength(2);
+    expect(component.find('h1').parents()).toHaveLength(3);
     expect(component.find('h2').parents()).toHaveLength(2);
   });
 });

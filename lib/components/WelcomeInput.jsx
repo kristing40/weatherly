@@ -32,21 +32,9 @@ export default class WelcomeInput extends Component {
     }
   }
 
-
   setLocalStorage() {
     localStorage.setItem('city', this.state.input);
     this.setState({ input: '' });
-  }
-
-  submitLocation(location) {
-    this.getWeather(location);
-    // Search.setState({ input: '' })
-    console.log(this);
-  }
-
-  resetInput() {
-    localStorage.removeItem('city');
-    this.setState({ welcomePage: true });
   }
 
   getWeather(location) {
@@ -80,6 +68,15 @@ export default class WelcomeInput extends Component {
     });
   }
 
+  submitLocation(location) {
+    this.getWeather(location);
+  }
+
+  resetInput() {
+    localStorage.removeItem('city');
+    this.setState({ welcomePage: true });
+  }
+
   render() {
     if (this.state.welcomePage && !this.state.errorMessage) {
       return (
@@ -89,7 +86,7 @@ export default class WelcomeInput extends Component {
           <h3>Don't let the weather catch you off guard!!</h3>
         </section>
     );
-    } else if (this.state.errorMessage === true) {
+    } else if (this.state.errorMessage) {
       return (
         <section className="fullDisplay">
           <Search submitHandler={this.submitLocation.bind(this)} />
@@ -103,12 +100,10 @@ export default class WelcomeInput extends Component {
         <section className="fullDisplay">
           <Search submitHandler={this.submitLocation.bind(this)} />
           <div>
-            <input
+            <button
               className="reset-btn"
-              type="submit"
-              value="Reset"
               onClick={() => this.resetInput()}
-            />
+            >Reset</button>
           </div>
           <div className="current-weather">
             <div className="current-weather-inner-container">
